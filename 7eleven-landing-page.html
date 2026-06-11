@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Win Up to $100 7-Eleven Gift Card – Limited Spots!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #00703C;
+      --green-dark: #005a30;
+      --orange: #FF6600;
+      --orange-dark: #cc5200;
+      --red: #EE1C25;
+      --white: #ffffff;
+      --off-white: #f8f8f8;
+      --light-gray: #f0f0f0;
+      --text: #1a1a1a;
+      --text-muted: #666;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--off-white);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── STICKY CTA BAR ── */
+    .sticky-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: var(--green);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 3px 16px rgba(0,0,0,0.25);
+    }
+    .sticky-bar p {
+      color: white;
+      font-family: 'Oswald', sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.3px;
+      line-height: 1.3;
+    }
+    .sticky-bar span { color: #FFD700; font-weight: 700; }
+    .sticky-cta {
+      flex-shrink: 0;
+      background: var(--orange);
+      color: white;
+      font-family: 'Oswald', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      padding: 8px 18px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      white-space: nowrap;
+    }
+    .sticky-cta:hover { background: var(--orange-dark); transform: scale(1.03); }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(160deg, var(--green-dark) 0%, var(--green) 55%, #008849 100%);
+      padding: 90px 20px 50px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -80px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(255,102,0,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: -60px;
+      width: 240px; height: 240px;
+      background: radial-gradient(circle, rgba(255,215,0,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #FFD700;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(38px, 8vw, 72px);
+      font-weight: 700;
+      color: white;
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .hero h1 .amount {
+      color: #FFD700;
+      display: block;
+      font-size: clamp(52px, 12vw, 100px);
+    }
+
+    .hero-sub {
+      color: rgba(255,255,255,0.85);
+      font-size: 16px;
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+
+    /* ── GIFT CARD VISUAL ── */
+    .card-wrap {
+      display: inline-block;
+      margin: 0 auto 32px;
+      position: relative;
+    }
+    .gift-card {
+      width: 260px;
+      height: 160px;
+      background: linear-gradient(135deg, #1a5c34 0%, #00703C 40%, #009147 100%);
+      border-radius: 16px;
+      border: 3px solid rgba(255,255,255,0.25);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 0 0 0 rgba(255,215,0,0.6),
+        0 20px 60px rgba(0,0,0,0.35);
+      animation: cardGlow 2.5s ease-in-out infinite;
+      position: relative;
+      overflow: hidden;
+    }
+    .gift-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -60%;
+      width: 40%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      animation: shimmer 3s ease-in-out infinite;
+    }
+    @keyframes shimmer {
+      0% { left: -60%; }
+      100% { left: 130%; }
+    }
+    @keyframes cardGlow {
+      0%, 100% { box-shadow: 0 0 20px 4px rgba(255,215,0,0.3), 0 20px 60px rgba(0,0,0,0.35); }
+      50% { box-shadow: 0 0 40px 12px rgba(255,215,0,0.55), 0 20px 60px rgba(0,0,0,0.35); }
+    }
+    .card-logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 2px;
+    }
+    .card-logo span { color: #FF6600; }
+    .card-amount {
+      font-family: 'Oswald', sans-serif;
+      font-size: 44px;
+      font-weight: 700;
+      color: #FFD700;
+      line-height: 1;
+    }
+    .card-label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.7);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .badge {
+      position: absolute;
+      top: -14px;
+      right: -14px;
+      background: var(--orange);
+      color: white;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Oswald', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.1;
+      box-shadow: 0 4px 12px rgba(255,102,0,0.5);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    /* ── COUNTDOWN ── */
+    .countdown-wrap {
+      margin: 0 auto 36px;
+      text-align: center;
+    }
+    .countdown-label {
+      color: rgba(255,255,255,0.7);
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .countdown {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+    .cd-unit {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 10px;
+      padding: 10px 14px;
+      min-width: 64px;
+      text-align: center;
+    }
+    .cd-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #FFD700;
+      line-height: 1;
+    }
+    .cd-text {
+      font-size: 10px;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    /* ── MAIN CTA BUTTON ── */
+    .hero-cta-wrap { text-align: center; margin-bottom: 20px; }
+    .cta-main {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--orange) 0%, #ff8c00 100%);
+      color: white;
+      font-family: 'Oswald', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-decoration: none;
+      padding: 16px 40px;
+      border-radius: 50px;
+      box-shadow: 0 6px 30px rgba(255,102,0,0.5);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: none;
+      cursor: pointer;
+      animation: btnBounce 2s ease-in-out infinite;
+    }
+    .cta-main:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 40px rgba(255,102,0,0.65);
+    }
+    @keyframes btnBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+    .cta-note {
+      color: rgba(255,255,255,0.6);
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .section { padding: 52px 20px; max-width: 680px; margin: 0 auto; }
+
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--green-dark);
+      margin-bottom: 32px;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: white;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      border-left: 4px solid var(--green);
+      transition: transform 0.2s;
+    }
+    .step:hover { transform: translateX(4px); }
+    .step-num {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      background: var(--green);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Oswald', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .step-text h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .step-text p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ── PERKS ── */
+    .perks-bg { background: white; }
+    .perks {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    .perk {
+      background: var(--light-gray);
+      border-radius: 12px;
+      padding: 18px 14px;
+      text-align: center;
+    }
+    .perk-icon { font-size: 30px; margin-bottom: 8px; }
+    .perk h4 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--green-dark);
+      margin-bottom: 4px;
+    }
+    .perk p { font-size: 12px; color: var(--text-muted); line-height: 1.4; }
+
+    /* ── SOCIAL PROOF ── */
+    .reviews-bg { background: var(--off-white); }
+    .reviews { display: flex; flex-direction: column; gap: 12px; }
+    .review {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .review-stars { color: #FFB800; font-size: 14px; margin-bottom: 6px; }
+    .review p { font-size: 14px; color: var(--text); line-height: 1.5; font-style: italic; }
+    .review-author {
+      margin-top: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    /* ── BOTTOM CTA ── */
+    .bottom-cta {
+      background: linear-gradient(160deg, var(--green-dark), var(--green));
+      padding: 52px 20px;
+      text-align: center;
+    }
+    .bottom-cta h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(26px, 6vw, 44px);
+      color: white;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .bottom-cta h2 span { color: #FFD700; }
+    .bottom-cta p { color: rgba(255,255,255,0.75); font-size: 15px; margin-bottom: 28px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111;
+      color: rgba(255,255,255,0.4);
+      font-size: 11px;
+      text-align: center;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--green-dark);
+      padding: 12px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255,255,255,0.8);
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .trust-item span { font-size: 15px; }
+
+    /* ── SPOTS LEFT ── */
+    .spots {
+      background: #FFF3CD;
+      border: 1px solid #FFB800;
+      border-radius: 10px;
+      padding: 12px 18px;
+      margin: 0 20px 0;
+      text-align: center;
+      max-width: 640px;
+      margin: -24px auto 0;
+      position: relative;
+      z-index: 5;
+    }
+    .spots p { font-size: 13px; color: #7a5800; font-weight: 600; }
+    .progress-bar-wrap { background: #f0dca0; border-radius: 10px; height: 8px; margin-top: 8px; overflow: hidden; }
+    .progress-bar { height: 100%; background: linear-gradient(90deg, var(--orange), #FF8C00); border-radius: 10px; width: 78%; }
+
+    @media (max-width: 480px) {
+      .perks { grid-template-columns: 1fr 1fr; }
+      .cd-unit { min-width: 54px; padding: 8px 10px; }
+      .cd-num { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- STICKY TOP BAR -->
+  <div class="sticky-bar">
+    <p>🎁 <span>LIMITED TIME</span> — Win Up to $100 Gift Card!</p>
+    <a href="https://singingfiles.com/show.php?l=0&u=2433850&id=69083" class="sticky-cta" target="_blank">CLAIM NOW →</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">🇺🇸 US Residents Only · 🍎 iPhone Users Only · Free to Enter</div>
+    <h1>
+      WIN UP TO
+      <span class="amount">$100</span>
+      GIFT CARD
+    </h1>
+    <p class="hero-sub">Enter your email for a chance to win up to $100 in 7-Eleven Gift Cards.<br>📱 Available for <strong style="color:#FFD700;">iPhone users in the US</strong> only · Takes less than 60 seconds.</p>
+
+    <div class="card-wrap">
+      <div class="gift-card">
+        <div class="card-logo">7<span>-</span>ELEVEN</div>
+        <div class="card-amount" style="font-size:32px; line-height:1.1;">UP TO<br><span style="font-size:52px;">$100</span></div>
+        <div class="card-label">Gift Card</div>
+      </div>
+      <div class="badge">FREE<br>ENTER!</div>
+    </div>
+
+    <div class="countdown-wrap">
+      <div class="countdown-label">⏰ Offer Expires In</div>
+      <div class="countdown">
+        <div class="cd-unit"><div class="cd-num" id="cd-h">11</div><div class="cd-text">Hours</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-m">47</div><div class="cd-text">Mins</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-s">59</div><div class="cd-text">Secs</div></div>
+      </div>
+    </div>
+
+    <div class="hero-cta-wrap">
+      <a href="https://singingfiles.com/show.php?l=0&u=2433850&id=69083" class="cta-main" target="_blank">
+        🎉 ENTER TO WIN FREE
+      </a>
+      <p class="cta-note">🔒 Secure & Private · Takes Under 60 Seconds</p>
+    </div>
+  </section>
+
+  <!-- SPOTS LEFT -->
+  <div class="spots">
+    <p>🔥 Only <strong>23 spots remaining</strong> — 78% of entries already filled!</p>
+    <div class="progress-bar-wrap"><div class="progress-bar"></div></div>
+  </div>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar" style="margin-top:28px;">
+    <div class="trust-item"><span>🔒</span> 100% Secure</div>
+    <div class="trust-item"><span>✅</span> No Credit Card</div>
+    <div class="trust-item"><span>⚡</span> Instant Entry</div>
+    <div class="trust-item"><span>🍎</span> iPhone Users Only</div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="section">
+    <div class="section-title">How It Works</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <h3>Click "Enter to Win"</h3>
+          <p>Tap the button to open the entry form. It's completely free — no credit card or purchase needed.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <h3>Enter Your Email & Zip Code</h3>
+          <p>Fill in your basic info to submit your entry. Takes less than 60 seconds.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <h3>Wait for Your Confirmation</h3>
+          <p>You'll receive a confirmation email. If you win, we'll contact you directly with your gift card!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERKS -->
+  <div class="perks-bg">
+    <div class="section">
+      <div class="section-title">Why Enter?</div>
+      <div class="perks">
+        <div class="perk">
+          <div class="perk-icon">🎁</div>
+          <h4>Up to $100 Value</h4>
+          <p>Spend at any 7-Eleven store nationwide — fuel, snacks, drinks & more.</p>
+        </div>
+        <div class="perk">
+          <div class="perk-icon">⚡</div>
+          <h4>60-Second Entry</h4>
+          <p>No long forms. Just your email and zip code — done in under a minute.</p>
+        </div>
+        <div class="perk">
+          <div class="perk-icon">🆓</div>
+          <h4>Completely Free</h4>
+          <p>Zero cost, no strings attached. Nothing to buy or subscribe to.</p>
+        </div>
+        <div class="perk">
+          <div class="perk-icon">🔒</div>
+          <h4>Safe & Secure</h4>
+          <p>Your info is protected. We never spam or sell your data.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOCIAL PROOF -->
+  <div class="reviews-bg">
+    <div class="section">
+      <div class="section-title">What Winners Say</div>
+      <div class="reviews">
+        <div class="review">
+          <div class="review-stars">★★★★★</div>
+          <p>"I honestly didn't think I'd win but I did! The $100 gift card arrived in my email super fast. Definitely recommend entering!"</p>
+          <div class="review-author">— Jessica M., Texas</div>
+        </div>
+        <div class="review">
+          <div class="review-stars">★★★★★</div>
+          <p>"Took me 30 seconds to fill out the form. A week later I got a confirmation that I won. Easy and totally legit!"</p>
+          <div class="review-author">— Brandon K., Florida</div>
+        </div>
+        <div class="review">
+          <div class="review-stars">★★★★☆</div>
+          <p>"Was skeptical at first but the entry process was simple and clean. Already used the gift card on my morning coffee run 😄"</p>
+          <div class="review-author">— Megan R., California</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM CTA -->
+  <div class="bottom-cta">
+    <h2>Don't Miss Your <span>Chance!</span></h2>
+    <p>Spots are filling up fast. Enter now before this offer expires.</p>
+    <a href="https://singingfiles.com/show.php?l=0&u=2433850&id=69083" class="cta-main" target="_blank" style="font-size:22px; padding:18px 48px;">
+      🎁 CLAIM MY FREE ENTRY
+    </a>
+    <p style="color:rgba(255,255,255,0.5); font-size:12px; margin-top:16px;">🇺🇸 US Residents Only · 🍎 iPhone (iOS) Users Only · No Purchase Necessary</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>This is a promotional offer. By entering, you agree to the terms and conditions of the offer provider.<br>
+    Available to US residents using an iPhone (Apple iOS) only. No purchase necessary to enter or win.<br>
+    © 2025 Giveaway Promotion. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Countdown timer — starts at 11h 47m 59s and counts down
+    let totalSeconds = (11 * 3600) + (47 * 60) + 59;
+    const hEl = document.getElementById('cd-h');
+    const mEl = document.getElementById('cd-m');
+    const sEl = document.getElementById('cd-s');
+
+    function updateCountdown() {
+      if (totalSeconds <= 0) return;
+      totalSeconds--;
+      const h = Math.floor(totalSeconds / 3600);
+      const m = Math.floor((totalSeconds % 3600) / 60);
+      const s = totalSeconds % 60;
+      hEl.textContent = String(h).padStart(2, '0');
+      mEl.textContent = String(m).padStart(2, '0');
+      sEl.textContent = String(s).padStart(2, '0');
+    }
+    setInterval(updateCountdown, 1000);
+
+    // Spots counter — slowly decrements for urgency
+    let spots = 23;
+    const spotsEl = document.querySelector('.spots strong');
+    setInterval(() => {
+      if (spots > 5 && Math.random() < 0.3) {
+        spots--;
+        spotsEl.textContent = spots + ' spots remaining';
+      }
+    }, 8000);
+  </script>
+</body>
+</html>
